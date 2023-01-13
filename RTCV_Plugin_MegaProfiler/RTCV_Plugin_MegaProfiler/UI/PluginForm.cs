@@ -19,8 +19,7 @@ namespace PLUGIN_MEGAPROFILER.UI
     using System.Text.RegularExpressions;
     using Eocron;
     using System.Diagnostics;
-
-
+    using System.Security.Cryptography;
 
     public partial class PluginForm : Form
     {
@@ -39,17 +38,20 @@ namespace PLUGIN_MEGAPROFILER.UI
 
 
             this.Text = PLUGIN_MEGAPROFILER.CamelCase(nameof(PLUGIN_MEGAPROFILER).Replace("_", " ")) + $" - Version {plugin.Version.ToString()}"; //automatic window title
+
+            this.cbAsmSpec.Items.Clear();
+            cbAsmSpec.DataSource = Enum.GetNames(typeof(AsmLanguage));
         }
 
 
 
         private void PluginForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(HideOnClose)
+            if (HideOnClose)
             {
                 e.Cancel = true;
                 this.Hide();
-            }    
+            }
         }
 
         private void btnLoadDomains_Click(object sender, EventArgs e)
@@ -132,7 +134,7 @@ namespace PLUGIN_MEGAPROFILER.UI
     }
     public enum AsmLanguage
     {
-        X86
+        X86, M68K, MOS65816
     }
 
     public static class MathExtensions
@@ -218,6 +220,38 @@ namespace PLUGIN_MEGAPROFILER.UI
                     2,
                     2,
                     6
+                }
+            };
+            GSpecs[AsmLanguage.M68K] = new AsmSpec()
+            {
+                Instructions = new List<ORegex<byte>>()
+                {
+                    new ORegex<byte>("{0}{1}{2}{3}", x => x.Fits("0b01000110"), x => x.Fits("0b11??????"), x => true, x=> true), // move immediate into status register?
+                    new ORegex<byte>("{0}{1}{2}{3}", x => x.Fits("0b00?????0"), x => x.Fits("0b01??????"), x => true, x=> true), // movea
+                    new ORegex<byte>("{0}{1}{2}{3}", x => x.Fits("0b1100????"), x => x.Fits("0b11111?00"), x => true, x=> true), // mul
+                },
+                InstructionLengths = new List<int>()
+                {
+                    4, 4, 4
+                }
+            };
+            GSpecs[AsmLanguage.MOS65816] = new AsmSpec()
+            {
+                Instructions = new List<ORegex<byte>>()
+                {
+
+                //new ORegex<byte>("{0}{1}{2}", x=> x == 0x4C || x == 0x6C || x == 0x7c || x== 0xdc, x => true,x => true), //jmp (3 bytes)
+                //new ORegex<byte>("{0]{1}{2}{3}", x=> x == 0x5c, x => true,x => true,x => true), // jmp (4 bytes)
+                new ORegex<byte>("{0}{1}{2}", x => x == 0x20, x => true,x => true), // jsr (3 bytes)
+                new ORegex<byte>("{0}{1}{2}{3}", x => x == 0x22, x => true,x => true,x => true), // jsr (4 bytes)
+                new ORegex<byte>("{0}{1}", x => x== 0xa1 || x == 0xa3 || x == 0xa5 || x == 0xa7 || x== 0xb1 || x == 0xb3 || x == 0xb5 || x == 0xb7, x => true), // lda (2 bytes)
+                new ORegex<byte>("{0}{1}{2}", x => x == 0x90 || x == 0xB0 || x == 0xF0, x => true, x => true), // bcc/bcs/beq (2 bytes)
+                new ORegex<byte>("{0}{1}", x => x == 0xC1 || x == 0xc3 || x == 0xc5 || x == 0xc7|| x == 0xD1 || x == 0xd2 || x == 0xd3 || x == 0xd5 || x == 0xd7, x => true), // cmp (2 bytes)
+
+                },
+                InstructionLengths = new List<int>()
+                {
+                    /*3, 4,*/ 3, 4, 2, 3, 2
                 }
             };
         }
