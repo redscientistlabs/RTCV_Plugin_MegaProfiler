@@ -1,5 +1,5 @@
 # RTCV_PluginTemplate
-General use Plugin Template for RTCV ( https://github.com/ircluzar/RTCV )
+Plugin for generating padded VMDs to fix alignment. ( https://github.com/ircluzar/RTCV )
 
 Based on nullshock78's works on plugin creation.
 
