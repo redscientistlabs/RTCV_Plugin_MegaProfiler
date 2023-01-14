@@ -123,9 +123,7 @@ namespace PLUGIN_MEGAPROFILER.UI
             // 
             // lbEndianTypeValue
             // 
-            this.lbEndianTypeValue.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbEndianTypeValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbEndianTypeValue.AutoSize = true;
             this.lbEndianTypeValue.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.lbEndianTypeValue.ForeColor = System.Drawing.Color.White;
@@ -138,9 +136,7 @@ namespace PLUGIN_MEGAPROFILER.UI
             // 
             // lbWordSizeValue
             // 
-            this.lbWordSizeValue.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbWordSizeValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbWordSizeValue.AutoSize = true;
             this.lbWordSizeValue.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.lbWordSizeValue.ForeColor = System.Drawing.Color.White;
@@ -153,9 +149,7 @@ namespace PLUGIN_MEGAPROFILER.UI
             // 
             // lbDomainSizeValue
             // 
-            this.lbDomainSizeValue.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbDomainSizeValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbDomainSizeValue.AutoSize = true;
             this.lbDomainSizeValue.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.lbDomainSizeValue.ForeColor = System.Drawing.Color.White;
@@ -168,9 +162,7 @@ namespace PLUGIN_MEGAPROFILER.UI
             // 
             // lbEndianTypeLabel
             // 
-            this.lbEndianTypeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbEndianTypeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbEndianTypeLabel.AutoSize = true;
             this.lbEndianTypeLabel.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.lbEndianTypeLabel.ForeColor = System.Drawing.Color.White;
@@ -183,9 +175,7 @@ namespace PLUGIN_MEGAPROFILER.UI
             // 
             // lbWordSizeLabel
             // 
-            this.lbWordSizeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbWordSizeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbWordSizeLabel.AutoSize = true;
             this.lbWordSizeLabel.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.lbWordSizeLabel.ForeColor = System.Drawing.Color.White;
@@ -198,9 +188,7 @@ namespace PLUGIN_MEGAPROFILER.UI
             // 
             // lbDomainSizeLabel
             // 
-            this.lbDomainSizeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbDomainSizeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbDomainSizeLabel.AutoSize = true;
             this.lbDomainSizeLabel.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.lbDomainSizeLabel.ForeColor = System.Drawing.Color.White;
@@ -213,9 +201,6 @@ namespace PLUGIN_MEGAPROFILER.UI
             // 
             // btnLoadDomains
             // 
-            this.btnLoadDomains.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLoadDomains.BackColor = System.Drawing.Color.Gray;
             this.btnLoadDomains.FlatAppearance.BorderSize = 0;
             this.btnLoadDomains.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -234,9 +219,6 @@ namespace PLUGIN_MEGAPROFILER.UI
             // 
             // cbSelectedMemoryDomain
             // 
-            this.cbSelectedMemoryDomain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.cbSelectedMemoryDomain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.cbSelectedMemoryDomain.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSelectedMemoryDomain.DropDownWidth = 172;
@@ -254,9 +236,6 @@ namespace PLUGIN_MEGAPROFILER.UI
             // 
             // cbAsmSpec
             // 
-            this.cbAsmSpec.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.cbAsmSpec.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.cbAsmSpec.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbAsmSpec.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -274,9 +253,6 @@ namespace PLUGIN_MEGAPROFILER.UI
             // 
             // label17
             // 
-            this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.label17.ForeColor = System.Drawing.Color.White;
@@ -289,9 +265,6 @@ namespace PLUGIN_MEGAPROFILER.UI
             // 
             // lbAsmSpec
             // 
-            this.lbAsmSpec.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.lbAsmSpec.AutoSize = true;
             this.lbAsmSpec.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.lbAsmSpec.ForeColor = System.Drawing.Color.White;
