@@ -18,7 +18,7 @@ namespace PLUGIN_MEGAPROFILER
         //-------[ Plugin metadata ]-------
 
         // >>> Make sure you rename BOTH the namespace and class (Very important)
-        public string Description => "Tool for generating VMDs with fixed alignment.";
+        public string Description => "Plugin for generating padded VMDs to fix alignment.";
         public string Author => "Your name here";
         public Version Version => new Version(0, 0, 1);
 
