@@ -20,8 +20,9 @@ namespace PLUGIN_MEGAPROFILER.UI
     using Eocron;
     using System.Diagnostics;
     using System.Security.Cryptography;
+    using RTCV.UI.Modular;
 
-    public partial class PluginForm : Form
+    public partial class PluginForm : ComponentForm
     {
         public PLUGIN_MEGAPROFILER plugin;
 
@@ -29,16 +30,15 @@ namespace PLUGIN_MEGAPROFILER.UI
 
         Logger logger = NLog.LogManager.GetCurrentClassLogger();
 
+        private long currentDomainSize = 0;
         public PluginForm(PLUGIN_MEGAPROFILER _plugin)
         {
             plugin = _plugin;
 
             this.InitializeComponent();
             this.FormClosing += new FormClosingEventHandler(this.PluginForm_FormClosing);
-
-
-            this.Text = PLUGIN_MEGAPROFILER.CamelCase(nameof(PLUGIN_MEGAPROFILER).Replace("_", " ")) + $" - Version {plugin.Version.ToString()}"; //automatic window title
-
+            this.Text = "Mega Profiler";
+            this.version.Text = $"{plugin.Version.ToString()}"; //automatic window title
             this.cbAsmSpec.Items.Clear();
             cbAsmSpec.DataSource = Enum.GetNames(typeof(AsmLanguage));
         }
@@ -76,7 +76,29 @@ namespace PLUGIN_MEGAPROFILER.UI
             }
 
         }
+        private void HandleSelectedMemoryDomainChange(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(cbSelectedMemoryDomain.SelectedItem?.ToString()) || !MemoryDomains.MemoryInterfaces.ContainsKey(cbSelectedMemoryDomain.SelectedItem.ToString()))
+            {
+                cbSelectedMemoryDomain.Items.Clear();
+                return;
+            }
 
+            MemoryInterface mi = MemoryDomains.MemoryInterfaces[cbSelectedMemoryDomain.SelectedItem.ToString()];
+
+            lbDomainSizeValue.Text = "0x" + mi.Size.ToString("X");
+            lbWordSizeValue.Text = $"{mi.WordSize * 8} bits";
+            lbEndianTypeValue.Text = (mi.BigEndian ? "Big" : "Little");
+
+            currentDomainSize = Convert.ToInt64(mi.Size);
+
+            updateInterface();
+        }
+
+        private void updateInterface()
+        {
+            MemoryInterface mi = MemoryDomains.MemoryInterfaces[cbSelectedMemoryDomain.SelectedItem.ToString()];
+        }
         private void btnGenerate_Click(object sender, EventArgs e)
         {
             MemoryInterface mi = MemoryDomains.GetInterface(cbSelectedMemoryDomain.SelectedItem.ToString());
@@ -132,6 +154,8 @@ namespace PLUGIN_MEGAPROFILER.UI
 
         }
     }
+
+
     public enum AsmLanguage
     {
         X86, M68K, MOS65816

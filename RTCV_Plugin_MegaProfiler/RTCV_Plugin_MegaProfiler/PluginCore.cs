@@ -18,7 +18,7 @@ namespace PLUGIN_MEGAPROFILER
         //-------[ Plugin metadata ]-------
 
         // >>> Make sure you rename BOTH the namespace and class (Very important)
-        public string Description => "This template allows you to quickly craft plugins for RTCV";
+        public string Description => "Tool for generating VMDs with fixed alignment.";
         public string Author => "Your name here";
         public Version Version => new Version(0, 0, 1);
 
@@ -28,10 +28,10 @@ namespace PLUGIN_MEGAPROFILER
         //Client is Emulator process
 
         //Tells on which sides the plugin has to load
-        public RTCSide SupportedSide => RTCSide.Both;
+        public RTCSide SupportedSide => RTCSide.Server;
 
         //Tells where we want the form to load when OpenTools button is pressed
-        public static RTCSide FormRequestSide = RTCSide.Both;     
+        public static RTCSide FormRequestSide = RTCSide.Server;
 
         //-----[ Additional information ]------
 
@@ -63,8 +63,8 @@ namespace PLUGIN_MEGAPROFILER
             {
                 //Plugin initialization
                 connectorEMU = new PluginConnectorEMU(this);
-                //PluginForm = new PluginForm(this);
-                //S.SET<PluginForm>(PluginForm);
+                PluginForm = new PluginForm(this);
+                S.SET<PluginForm>(PluginForm);
             }
             else if (side == RTCSide.Server || side == RTCSide.Both) // StandaloneRTC Process (RTCV UI) or Attached mode
             {
@@ -78,33 +78,23 @@ namespace PLUGIN_MEGAPROFILER
                 S.SET<PluginForm>(PluginForm);
 
 
-                // Doing sanity checks before registering the plugin in the OpenTools form
-                if (S.ISNULL<OpenToolsForm>())
-                {
-                    ((Logger)Logging.GlobalLogger).Error(string.Format("{0} v{1} failed to start: Singleton RTC_OpenTools_Form was null.", (object)this.Name, (object)this.Version));
-                    return false;
-                }
-                if (S.ISNULL<CoreForm>())
-                {
-                    ((Logger)Logging.GlobalLogger).Error(string.Format("{0} v{1} failed to start: Singleton UI_CoreForm was null.", (object)this.Name, (object)this.Version));
-                    return false;
-                }
-
                 string cname = CamelCase(Name);
                 //Registers the plugin in RTC's OpenTools form (in the Advanced Memory Tools)
                 switch (FormRequestSide)
                 {
                     case RTCSide.Client:
-                        S.GET<OpenToolsForm>().RegisterTool(cname, $"Open {cname}", () => { LocalNetCoreRouter.Route(Ep.EMU_SIDE, Commands.SHOW_WINDOW, true); });
+                        //S.GET<OpenToolsForm>().RegisterTool(cname, $"Open {cname}", () => { LocalNetCoreRouter.Route(Ep.EMU_SIDE, Commands.SHOW_WINDOW, true); });
                         break;
                     case RTCSide.Server:
-                        S.GET<OpenToolsForm>().RegisterTool(cname, $"Open {cname}", () => { LocalNetCoreRouter.Route(Ep.RTC_SIDE, Commands.SHOW_WINDOW, true); });
+                        //S.GET<OpenToolsForm>().RegisterTool(cname, $"Open {cname}", () => { LocalNetCoreRouter.Route(Ep.RTC_SIDE, Commands.SHOW_WINDOW, true); });
+
+                        UICore.mtForm.cbSelectBox.Items.Insert(UICore.mtForm.cbSelectBox.Items.Count - 1, PluginForm);
                         break;
                     case RTCSide.Both: //if you use this, you might want to pop a different form on each side. see SHOW_WINDOW in PluginConnectorEMU.cs and PluginConnectorRTC.cs
-                        S.GET<OpenToolsForm>().RegisterTool(cname, $"Open {cname}", () => { 
-                            LocalNetCoreRouter.Route(Ep.EMU_SIDE, Commands.SHOW_WINDOW, true);
-                            LocalNetCoreRouter.Route(Ep.RTC_SIDE, Commands.SHOW_WINDOW, true);
-                        });
+                        //S.GET<OpenToolsForm>().RegisterTool(cname, $"Open {cname}", () => { 
+                        //    LocalNetCoreRouter.Route(Ep.EMU_SIDE, Commands.SHOW_WINDOW, true);
+                        //    LocalNetCoreRouter.Route(Ep.RTC_SIDE, Commands.SHOW_WINDOW, true);
+                        //});
                         break;
                 }
 

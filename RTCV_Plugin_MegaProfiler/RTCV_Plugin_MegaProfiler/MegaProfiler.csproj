@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F257BBBE-E085-42DB-9F8D-C6BAC2726F59}</ProjectGuid>
+    <ProjectGuid>{7AA4FD83-9247-498F-B008-FB6159F51B48}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>RTCV_Plugin_MegaProfiler</RootNamespace>
