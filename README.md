@@ -1,4 +1,4 @@
-# RTCV_PluginTemplate
+# RTCV_Plugin_MegaProfiler
 Plugin for generating padded VMDs to fix alignment. ( https://github.com/ircluzar/RTCV )
 
 Based on nullshock78's works on plugin creation.
